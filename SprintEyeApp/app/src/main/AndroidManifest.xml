@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.camera.any"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+
+        android:usesCleartextTraffic="true"
+
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SprintEyeApp"
+        tools:targetApi="31">
+        <activity
+            android:name=".MainMenuActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.JoinSessionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.BasicSessionActivity"
+            android:exported="false" />
+        <activity 
+            android:name=".view.AdvancedSessionActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".view.RunResultsActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".view.ManageAthletesActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".view.ProfileActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".view.AccountSettingsActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".view.SecondPhoneSessionActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".view.RegisterActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".view.LoginActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".mediapipe.TurnOnCameraActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".view.BasicSessionCamera"
+            android:exported="false"/>
+        <activity
+            android:name=".view.AdvancedSessionCamera"
+            android:exported="false"/>
+        <activity
+            android:name=".mediapipe.AdjustCameraActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".mediapipe.DetectionActivity"
+            android:exported="false"/>
+    </application>
+
+</manifest>

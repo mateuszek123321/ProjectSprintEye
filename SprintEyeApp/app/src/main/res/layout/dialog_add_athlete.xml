@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFECB">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/tvTitle_add_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dodaj dane"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvTitle_edit_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edytuj"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone">
+        </TextView>
+
+        <EditText
+            android:id="@+id/add_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:inputType="textPersonName"
+            android:textColor="@android:color/black"
+            android:hint="Nazwa sportowca" />
+
+        <EditText
+            android:id="@+id/add_weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:inputType="numberDecimal"
+            android:textColor="@android:color/black"
+            android:hint="Waga (kg)"/>
+
+        <EditText
+            android:id="@+id/add_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:inputType="number"
+            android:textColor="@android:color/black"
+            android:hint="Wzrost (cm)"/>
+
+        <EditText
+            android:id="@+id/add_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:inputType="number"
+            android:textColor="@android:color/black"
+            android:hint="Wiek"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Buty długi dystans:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:id="@+id/shoe_models_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvShoe_long_distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Do długiego dystansu"
+                    android:textColor="@android:color/black"
+                    android:inputType="text">
+                </TextView>
+
+            <Button
+                android:id="@+id/btn_add_shoe_short_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="start"
+                android:layout_marginBottom="5dp"
+                android:text="+ nowy but"
+                android:textColor="@android:color/black"
+                android:backgroundTint="#B1CF5F">
+            </Button>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Buty krótki dystans:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:id="@+id/tvShoe_short_distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Do krótkiego dystansu"
+                    android:textColor="@android:color/black"
+                    android:inputType="text">
+                </TextView>
+
+            <Button
+                android:id="@+id/btn_add_shoe_long_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="start"
+                android:layout_marginBottom="5dp"
+                android:text="+ nowy but"
+                android:textColor="@android:color/black"
+                android:backgroundTint="#B1CF5F">
+            </Button>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:textSize="19sp"
+            android:text="Płeć: "/>
+
+        <RadioGroup
+            android:id="@+id/gender_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp">
+
+            <RadioButton
+                android:id="@+id/gender_male"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mężczyzna" />
+
+            <RadioButton
+                android:id="@+id/gender_female"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kobieta" />
+
+            <RadioButton
+                android:id="@+id/gender_not_provide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nie podaję"
+                android:checked="true" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Anuluj">
+            </Button>
+
+            <Button
+                android:id="@+id/btnSave_athlete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="40dp"
+                android:text="Zapisz">
+            </Button>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

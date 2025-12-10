@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pl.pollub.android.sprinteyeapp.view.BasicSessionActivity">
+
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="start|center_vertical"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="back_button"
+            android:scaleType="centerInside"
+            android:src="@drawable/reverse_arrow" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Podstawowa"
+            android:textColor="@android:color/white"
+            android:textSize="25sp" />
+
+        <ImageButton
+            android:id="@+id/account_options_button"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_gravity="end|center_vertical"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Opcje konta"
+            android:scaleType="centerInside"
+            android:src="@drawable/thumbnail" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/home_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="10dp">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/run_test_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nazwa próby"
+        android:textColorHint="@android:color/white"
+        app:boxStrokeColor="@android:color/white"
+        app:boxStrokeWidth="5dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@android:color/white"
+        app:hintTextColor="@android:color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/run_test_name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textColor="@android:color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dystans całkowity (m)"
+        android:textColorHint="@android:color/white"
+        app:boxStrokeColor="@android:color/white"
+        app:boxStrokeWidth="5dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@android:color/white"
+        app:hintTextColor="@android:color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/dystans_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textColor="@android:color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/distance_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Zliczaj dystans na podstawie wykryć "
+                android:layout_marginTop="5dp"
+                android:textSize="17sp"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/one_lap_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:inputType="number"
+                android:hint="Dystans okrążenia (m)"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"/>
+
+            <LinearLayout
+                android:id="@+id/detection_count_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Przewidywana liczba wykryć:"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp">
+                </TextView>
+
+                <ImageButton
+                    android:id="@+id/btnDetection_Decrease"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/minus_button"
+                    android:scaleType="centerInside">
+                </ImageButton>
+
+                <TextView
+                    android:id="@+id/tvDetection_Value"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="5dp"
+                    android:text="0"
+                    android:textSize="25sp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center" />
+
+                <ImageButton
+                    android:id="@+id/btnDetection_Increase"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/plus_button"
+                    android:scaleType="centerInside">
+                </ImageButton>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvAthlete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Zawodnik:"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvAdded_athlete_to_session"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Brak dodanych zawodników"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:textColor="@android:color/white">
+            </TextView>
+
+            <Button
+                android:id="@+id/btnAdd_athlete"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:text="+ zawodnik"
+                android:textSize="15sp"
+                android:textColor="@android:color/black"
+                android:backgroundTint="#B1CF5F">
+            </Button>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/start_type_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Wybierz typ startu"
+        app:boxStrokeColor="@android:color/white"
+        app:boxStrokeWidth="5dp"
+        app:hintTextColor="@android:color/white">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:editable="false"
+            android:textColor="@android:color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchSeries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Tryb serii "
+        android:textSize="19sp"
+        android:textColor="@android:color/white" />
+
+    <LinearLayout
+        android:id="@+id/seriesOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/one_lap_distance_series"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:inputType="number"
+            android:hint="Dystans okrążenia (m)"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ilość cykli:"
+                android:textColor="@android:color/white"
+                android:textSize="19sp">
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/btnCycles_decrease"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/minus_button"
+                android:scaleType="centerInside">
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/tvCycles_value"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="5dp"
+                android:text="0"
+                android:textSize="25sp"
+                android:textColor="@android:color/white"
+                android:gravity="center" />
+
+            <ImageButton
+                android:id="@+id/btn_cycles_increase"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="5dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/plus_button"
+                android:scaleType="centerInside">
+            </ImageButton>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ile wykryć na serię:"
+                android:textColor="@android:color/white"
+                android:textSize="19sp">
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/btnDetection_decrease"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/minus_button"
+                android:scaleType="centerInside">
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/tvDetection_value"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="5dp"
+                android:text="0"
+                android:textSize="25sp"
+                android:textColor="@android:color/white"
+                android:gravity="center" />
+
+            <ImageButton
+                android:id="@+id/btnDetection_increase"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="5dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/plus_button"
+                android:scaleType="centerInside">
+            </ImageButton>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Czas między seriami:"
+                android:textColor="@android:color/white"
+                android:textSize="19sp">
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/btnSeries_time_decrease"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/minus_button"
+                android:scaleType="centerInside">
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/tvSeries_time"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="5dp"
+                android:text="0"
+                android:textSize="25sp"
+                android:textColor="@android:color/white"
+                android:gravity="center" />
+
+            <ImageButton
+                android:id="@+id/btn_series_time_increase"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="5dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/plus_button"
+                android:scaleType="centerInside">
+            </ImageButton>
+        </LinearLayout>
+
+        </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/start_basic_session"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:backgroundTint="#659157"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:src="@drawable/next_button" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/home_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="#136F63"
+        android:text="Home"
+        android:textSize="16sp"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/second_phone"
+    tools:context="pl.pollub.android.sprinteyeapp.view.SecondPhoneSessionActivity">
+
+
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="start|center_vertical"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/reverse_arrow"
+        android:scaleType="centerInside"
+        android:contentDescription="back_button"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Start/Stop"
+        android:textColor="@android:color/white"
+        android:textSize="25sp" />
+
+    <ImageButton
+        android:id="@+id/account_options_button"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_gravity="end|center_vertical"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="centerInside"
+        android:src="@drawable/thumbnail"
+        android:contentDescription="Opcje konta" />
+</androidx.appcompat.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/stopper_container"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/stopper_circle"
+            android:layout_width="270dp"
+            android:layout_height="270dp"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="false"
+            android:scaleX="1.9"
+            android:scaleY="1.9"
+            android:layout_gravity="center"
+            app:lottie_rawRes="@raw/stopper" />
+
+        <TextView
+            android:id="@+id/stopper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:000"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:textColor="@android:color/white" />
+
+        <ImageButton
+            android:id="@+id/start_button"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/button_start"
+            android:scaleType="centerInside"
+            android:contentDescription="@null"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="60dp"/>
+    </FrameLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/start_type_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="10dp"
+        android:hint="Wybierz typ startu"
+        android:textColorHint="@android:color/white"
+        app:boxStrokeWidth="5dp"
+        app:layout_constraintTop_toBottomOf="@id/stopper_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:editable="false"
+            android:textColor="@android:color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvLast_run_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Czas ostatniego biegu"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/start_type_layout">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="00:000"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/tvLast_run_time">
+    </TextView>
+
+    <Button
+        android:id="@+id/stop_button"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="#DE3C4B"
+        android:text="Stop"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/home_button"/>
+
+    <Button
+        android:id="@+id/home_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="5dp"
+        android:text="Home"
+        android:textSize="16sp"
+        android:backgroundTint="#136F63"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

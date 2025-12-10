@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:padding="10dp"
+    android:background="#97ABB1">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/img_athlete"
+            android:layout_width="160dp"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:alpha="0.5"
+            android:src="@drawable/blacklogo">
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/add_athlete_img"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="bottom|start"
+            android:background="@android:color/white"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/add_photo_from_gallery">
+        </ImageView>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="sportowiec"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="16sp">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvWeight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Waga"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"
+            android:textSize="15sp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvHeight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Wzrost"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"
+            android:textSize="15sp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvAge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Wiek"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"
+            android:textSize="15sp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvGender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Płeć"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"
+            android:textSize="15sp">
+        </TextView>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:text="Modele butów"
+        android:textAlignment="center"
+        android:textColor="@android:color/white">
+    </TextView>
+    <TextView
+        android:id="@+id/tvShoeModel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:textColor="@android:color/white">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="25dp"
+            android:backgroundTint="#DE3C4B"
+            android:text="Usuń">
+
+        </Button>
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="25dp"
+            android:backgroundTint="#6290C8"
+            android:text="Edytuj">
+
+        </Button>
+    </LinearLayout>
+</LinearLayout>
