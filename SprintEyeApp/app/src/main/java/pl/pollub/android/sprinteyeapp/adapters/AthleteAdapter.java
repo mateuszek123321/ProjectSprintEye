@@ -43,13 +43,14 @@ public class AthleteAdapter extends RecyclerView.Adapter<AthleteAdapter.AthleteV
 
     @Override
     public void onBindViewHolder(@NonNull AthleteViewHolder holder, int position){
-        Athlete athlete =items.get(position);
+        Athlete athlete = items.get(position);
         holder.binding.tvName.setText(athlete.nick);
 
         holder.itemView.setOnClickListener(v -> {
-            if(athleteListener != null){
-                athleteListener.onAthleteClick(athlete);
-            }
+            int pos = holder.getBindingAdapterPosition();
+            if (pos == RecyclerView.NO_POSITION) return;
+            Athlete a = items.get(pos);
+            if (athleteListener != null) athleteListener.onAthleteClick(a);
         });
     }
 

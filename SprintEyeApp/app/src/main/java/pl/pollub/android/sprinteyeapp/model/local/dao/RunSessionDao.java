@@ -40,4 +40,9 @@ public interface RunSessionDao {
     @Transaction
     @Query("SELECT * FROM run_session WHERE session_id = :id")
     LiveData<RunSessionWithRunsAndLaps> observeSessionWithRunsAndLaps(long id);
+    @Query("SELECT * FROM run_session WHERE account_user_id = :userId ORDER BY created_at DESC")
+    List<RunSession> getSessionsForUser(long userId);
+
+    @Query("DELETE FROM run_session WHERE session_id = :id")
+    void deleteById(long id);
 }

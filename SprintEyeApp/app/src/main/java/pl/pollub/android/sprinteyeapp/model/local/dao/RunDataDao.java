@@ -37,6 +37,9 @@ public interface RunDataDao {
             "ORDER BY run_id DESC")
     LiveData<List<RunData>> observeRunsForAthlete(long athleteId);
 
+    @Query("SELECT * FROM run_data WHERE session_id = :sessionId ORDER BY run_order ASC")
+    List<RunData> getRunsForSession(long sessionId);
+
     @Transaction
     @Query("SELECT * FROM run_data WHERE run_id = :id")
     LiveData<RunWithLaps> observeRunWithLaps(long id);

@@ -80,6 +80,10 @@ public class AthleteRepository {
         return shoeModelDao.observeShoesForAthlete(athleteId);
     }
 
+    public List<ShoeModel> getShoesForAthleteSync(long athleteId) {
+        return shoeModelDao.getShoesForAthleteSync(athleteId);
+    }
+
     public boolean isNickTaken(String nick, long userId, long excludeAthleteId){
         return athleteDao.countByNick(nick, userId, excludeAthleteId) > 0;
     }

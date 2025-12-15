@@ -23,15 +23,6 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
     public User Register(RegisterRequest input){
-        LocalDate parsedBirthDate = null;
-        if (input.getBirthDate() != null && !input.getBirthDate().isEmpty()) {
-            try{
-                java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy");
-                parsedBirthDate = LocalDate.parse(input.getBirthDate(), formatter);
-            }catch (Exception e){
-                throw new IllegalArgumentException("Nieprawidłowy format daty.");
-            }
-        }
         org.example.serversprinteye.domain.Gender parsedGender = null;
         try{
             parsedGender = org.example.serversprinteye.domain.Gender.valueOf(input.getGender().toUpperCase());
@@ -42,7 +33,7 @@ public class AuthService {
         User user = new User()
         .setUserName(input.getUserName())
         .setUserEmail(input.getUserEmail())
-        .setBirthDate(parsedBirthDate)
+        .setBirthDate(input.getBirthDate())
         .setGender(parsedGender)
         .setPassword(passwordEncoder.encode(input.getPassword()));
 

@@ -43,12 +43,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Model buta:"
+            android:text="Dystans całkowity:"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/tvShoe_model"
+            android:id="@+id/tvWhole_distance"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -92,75 +92,10 @@
         android:textColor="@android:color/white"
         android:textSize="16sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/tvRun_number_header"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Bieg"
-            android:textColor="@android:color/white"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/tvDistance_header"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Dystans"
-            android:textColor="@android:color/white"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/tvAthlete_header"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Sportowiec"
-            android:textColor="@android:color/white"
-            android:textSize="17sp" />
-    </LinearLayout>
-
-    <TableLayout
-        android:id="@+id/tableLapsBasic"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tv_times"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/table_border">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/table_row_border">
-
-            <TextView
-                android:id="@+id/tvLap_header"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:text="Okrążenie"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tvTime_header"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:text="Czas"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
-        </TableRow>
-    </TableLayout>
+        android:nestedScrollingEnabled="true"/>
 </LinearLayout>

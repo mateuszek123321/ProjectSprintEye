@@ -2,14 +2,10 @@ package org.example.serversprinteye.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.aspectj.bridge.IMessage;
-import org.example.serversprinteye.domain.*;
 
-import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -19,7 +15,6 @@ public class RegisterRequest {
     private String userEmail;
 
     //dd/mm/yyyy
-    @Past(message = "Data urodzenia nie jest z przeszłości")
     private String birthDate;
 
     @NotEmpty(message = "Hasło jest wymagane")

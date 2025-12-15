@@ -89,6 +89,11 @@ public class ManageAthletesViewModel extends AndroidViewModel {
     public LiveData<List<ShoeModel>> getShoesForAthlete(long athleteId) {
         return repository.getShoesForAthlete(athleteId);
     }
+
+    public List<ShoeModel> getShoesForAthleteSync(long athleteId) {
+        return repository.getShoesForAthleteSync(athleteId);
+    }
+
     public boolean isNickTaken(String nick, long excludeAthleteId){
         return repository.isNickTaken(nick, userId, excludeAthleteId);
     }

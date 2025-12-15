@@ -74,9 +74,6 @@
         <activity
             android:name=".mediapipe.AdjustCameraActivity"
             android:exported="false"/>
-        <activity
-            android:name=".mediapipe.DetectionActivity"
-            android:exported="false"/>
     </application>
 
 </manifest>

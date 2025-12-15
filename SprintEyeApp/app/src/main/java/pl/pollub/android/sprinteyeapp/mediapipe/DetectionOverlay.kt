@@ -11,8 +11,8 @@ import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarkerResult
 import kotlin.math.max
 
 class DetectionOverlay (context: Context, attrs: AttributeSet?=null) : View(context, attrs) {
-
     private var results: PoseLandmarkerResult? = null
+
     private var pointPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.BLACK
         style = Paint.Style.FILL
@@ -26,6 +26,7 @@ class DetectionOverlay (context: Context, attrs: AttributeSet?=null) : View(cont
     private var scaleFactor: Float = 1f
     private var imageWidth = 1
     private var imageHeight = 1
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
@@ -42,36 +43,12 @@ class DetectionOverlay (context: Context, attrs: AttributeSet?=null) : View(cont
             val ls = landmark[11]
             //rightshoulder
             val rs = landmark[12]
-            //lefthip
-            val lh = landmark[23]
-            //righthip
-            val rh = landmark[24]
-            //rightelbow
-            val re = landmark[14]
-            //leftelbow
-            val le = landmark[13]
-            //shoulder to shoulder
-            // canvas.drawLine( leftshoulder.x() * imageWidth * scaleFactor,
-            // leftshoulder.y() * imageHeight * scaleFactor,
-            // rightshoulder.x() * imageWidth * scaleFactor,
-            // rightshoulder.y() * imageHeight * scaleFactor,
-            // linePaint )
+
             fun fx(v: Float) = v * imageWidth * scaleFactor
             fun fy(v: Float) = v * imageHeight * scaleFactor
 
             //shoulder-shoulder
             canvas.drawLine(fx(ls.x()), fy(ls.y()), fx(rs.x()), fy(rs.y()), linePaint)
-            //left shoulder - left hip
-            canvas.drawLine(fx(ls.x()), fy(ls.y()), fx(lh.x()), fy(lh.y()), linePaint)
-            //right shoulder - right hip
-            canvas.drawLine(fx(rs.x()), fy(rs.y()), fx(rh.x()), fy(rh.y()), linePaint)
-            //hip-hip
-            canvas.drawLine(fx(lh.x()), fy(lh.y()), fx(rh.x()), fy(rh.y()), linePaint)
-            //left shoulder - left elbow
-            canvas.drawLine(fx(ls.x()), fy(ls.y()), fx(le.x()), fy(le.y()), linePaint)
-            //right shoulder - right elbow
-            canvas.drawLine(fx(rs.x()), fy(rs.y()), fx(re.x()), fy(re.y()), linePaint)
-
         }
     }
     fun setResults(

@@ -25,6 +25,8 @@ import com.airbnb.lottie.L;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import pl.pollub.android.sprinteyeapp.R;
 import pl.pollub.android.sprinteyeapp.databinding.DialogAddAthleteBinding;
@@ -45,6 +47,7 @@ public class AddAthleteDialog extends Dialog {
     private Runnable nickValidationRunnable;
     private final List<View> longDistanceShoeSlots = new ArrayList<>();
     private final List<View> shortDistanceShoeSlots = new ArrayList<>();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public AddAthleteDialog(@NonNull Context context, ManageAthletesViewModel viewModel, @Nullable Athlete athleteToEdit){
         super(context);
@@ -100,17 +103,27 @@ public class AddAthleteDialog extends Dialog {
     }
 
     private void loadShoes(){
-        viewModel.getShoesForAthlete(athleteToEdit.id).observe((LifecycleOwner) getContext(), shoes ->{
-            if(shoes == null || shoes.isEmpty()) return;
+        executor.execute(() -> {
+            List<ShoeModel> shoes = viewModel.getShoesForAthleteSync(athleteToEdit.id);
 
-            for(ShoeModel shoe: shoes){
-                if (shoe.shoeType == ShoeType.LONG_DISTANCE){
-                    addShoeSlot(true, shoe.shoeName);
-                }else{
-                    addShoeSlot(false, shoe.shoeName);
+            if (binding == null) return;
+
+            binding.getRoot().post(() -> {
+                if (binding == null || !isShowing()) return;
+                if (shoes == null || shoes.isEmpty()) return;
+
+                for (ShoeModel shoe : shoes) {
+                    addShoeSlot(shoe.shoeType == ShoeType.LONG_DISTANCE, shoe.shoeName);
                 }
-            }
+            });
         });
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        executor.shutdownNow();
+        binding = null;
     }
 
     private void setupShoeButtons(){

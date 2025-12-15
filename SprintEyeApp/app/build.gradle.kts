@@ -40,6 +40,7 @@ android {
 
 dependencies {
     implementation(libs.camera.view)
+    implementation(libs.media3.common.ktx)
     val camerax_version = "1.4.2"
     implementation("androidx.camera:camera-core:${camerax_version}")
     implementation("androidx.camera:camera-camera2:${camerax_version}")

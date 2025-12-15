@@ -10,6 +10,8 @@ import androidx.lifecycle.LifecycleOwner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import pl.pollub.android.sprinteyeapp.R;
 import pl.pollub.android.sprinteyeapp.databinding.DialogAthleteDetailsBinding;
@@ -24,13 +26,14 @@ public class DetailsAthleteDialog extends Dialog {
     private final OnDeleteClickListener deleteListener;
     private final ManageAthletesViewModel viewModel;
     private DialogAthleteDetailsBinding binding;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
     public interface OnEditClickListener{
         void onEditClick(Athlete athlete);
     }
     public interface OnDeleteClickListener{
         void onDeleteClick(Athlete athlete);
     }
-    public DetailsAthleteDialog(@NonNull Context context, Athlete athlete, ManageAthletesViewModel viewModel, OnEditClickListener editListener, OnDeleteClickListener deleteListener){
+    public DetailsAthleteDialog(@NonNull Context context,@NonNull Athlete athlete, @NonNull ManageAthletesViewModel viewModel, OnEditClickListener editListener, OnDeleteClickListener deleteListener){
         super(context);
         this.athlete = athlete;
         this.viewModel = viewModel;
@@ -48,7 +51,6 @@ public class DetailsAthleteDialog extends Dialog {
         loadShoes();
         setupButtons();
     }
-
 
     private void fillFieldWithData(){
         binding.tvName.setText(athlete.nick);
@@ -83,9 +85,23 @@ public class DetailsAthleteDialog extends Dialog {
     }
 
     private void loadShoes(){
-        viewModel.getShoesForAthlete(athlete.id).observe((LifecycleOwner) getContext(), shoes -> {
-            displayShoes(shoes);
+        executor.execute(() -> {
+            List<ShoeModel> shoes = viewModel.getShoesForAthleteSync(athlete.id);
+
+            if (binding == null) return;
+
+            binding.getRoot().post(() -> {
+                if (binding == null) return;
+                if (!isShowing()) return;
+                displayShoes(shoes);
+            });
         });
+    }
+    @Override
+    public void dismiss(){
+        super.dismiss();
+        executor.shutdownNow();
+        binding = null;
     }
     private  void displayShoes(List<ShoeModel> shoes){
         if(shoes == null || shoes.isEmpty()){
@@ -104,13 +120,11 @@ public class DetailsAthleteDialog extends Dialog {
                 shortDistance.add(shoe);
             }
         }
-        /*
-        StringBuilder shoesText = new StringBuilder();
 
         if (!longDistance.isEmpty()) {
             shoesText.append("Długi dystans:\n");
             for (ShoeModel shoe : longDistance) {
-                shoesText.append("• ").append(shoe.shoeName).append("\n");
+                shoesText.append("- ").append(shoe.shoeName).append("\n");
             }
             shoesText.append("\n");
         }
@@ -121,7 +135,7 @@ public class DetailsAthleteDialog extends Dialog {
                 shoesText.append("• ").append(shoe.shoeName).append("\n");
             }
         }
-         */
+
         binding.tvShoeModel.setText(shoesText.toString().trim());
     }
 

@@ -32,6 +32,14 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     @Override
     public void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
             throws IOException, ServletException {
+        String path = request.getRequestURI();
+        String method = request.getMethod();
+
+        if (isPublicEndpoint(path, method)) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
                 final String authHeader = request.getHeader("Authorization");
                 final String jwt;
                 final String userEmail;
@@ -61,5 +69,24 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 }catch (Exception e) {
                     handlerExceptionResolver.resolveException(request, response, null, e);
                 }
+    }
+    private boolean isPublicEndpoint(String path, String method) {
+        // POST endpoints that don't require authentication
+        if ("POST".equalsIgnoreCase(method)) {
+            return path.startsWith("/api/v1/register")
+                    || path.startsWith("/api/v1/login")
+                    || path.startsWith("/api/v1/forgot-password")
+                    || path.startsWith("/api/v1/reset-password");
+        }
+
+        // GET endpoints that don't require authentication
+        if ("GET".equalsIgnoreCase(method)) {
+            return path.startsWith("/api/v1/verify-email")
+                    || path.startsWith("/api/v1/check-email")
+                    || path.startsWith("/api/v1/check-username")
+                    || path.startsWith("/h2/");
+        }
+
+        return false;
     }
 }

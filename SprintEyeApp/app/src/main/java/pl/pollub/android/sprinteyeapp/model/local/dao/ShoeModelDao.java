@@ -35,6 +35,10 @@ public interface ShoeModelDao {
 
     @Query("SELECT * FROM shoe_model WHERE athlete_id = :athleteId")
     List<ShoeModel> getShoesForAthlete(long athleteId);
+
+    @Query("SELECT * FROM shoe_model WHERE athlete_id = :athleteId ORDER BY shoe_id DESC")
+    List<ShoeModel> getShoesForAthleteSync(long athleteId);
+
     @Query("DELETE FROM shoe_model")
     void deleteAll();
 }

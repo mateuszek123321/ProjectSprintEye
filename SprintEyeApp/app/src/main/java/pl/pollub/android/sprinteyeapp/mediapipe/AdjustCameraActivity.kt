@@ -78,7 +78,7 @@ class AdjustCameraActivity : AppCompatActivity() {
     }
 
     private fun confirmCameraSetting(){
-        binding.confirmCamerPositon.setOnClickListener{
+        binding.btnConfirmPhonePosition.setOnClickListener{
             when(sessionMode){
                 SESSION_MODE_BASIC -> {
                     val intent = Intent(this, BasicSessionCamera::class.java)

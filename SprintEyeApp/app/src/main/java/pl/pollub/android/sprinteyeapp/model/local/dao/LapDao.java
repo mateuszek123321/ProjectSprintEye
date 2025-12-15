@@ -33,6 +33,9 @@ public interface LapDao {
             "ORDER BY lap_number ASC")
     LiveData<List<Lap>> observeLapsForRun(long runId);
 
+    @Query("SELECT * FROM lap WHERE run_id = :runId ORDER BY lap_number ASC")
+    List<Lap> getLapsForRun(long runId);
+
     @Query("DELETE FROM lap WHERE run_id = :runId")
     void deleteLapsForRun(long runId);
 }

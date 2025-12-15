@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="#ABDAFC"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/tv_run_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:minWidth="30dp" />
+
+    <TextView
+        android:id="@+id/tv_run"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bieg"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:minWidth="80dp" />
+
+    <TextView
+        android:id="@+id/tv_athlete_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="100dp"
+        android:text="Dany sportowiec"
+        android:textSize="15sp"
+        android:textColor="@android:color/black" />
+
+</LinearLayout>

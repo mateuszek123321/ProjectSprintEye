@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import pl.pollub.android.sprinteyeapp.MainMenuActivity;
 import pl.pollub.android.sprinteyeapp.databinding.ActivityLoginBinding;
+import pl.pollub.android.sprinteyeapp.util.UserSessionManager;
 import pl.pollub.android.sprinteyeapp.viewmodel.LoginViewModel;
 
 public class LoginActivity extends AppCompatActivity {
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private Runnable loginIdRunnable;
     private final Handler passwordHandler = new Handler(Looper.getMainLooper());
     private Runnable passwordRunnable;
+    private UserSessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -33,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        sessionManager = new UserSessionManager(this);
 
         setupToolbarButtons();
         setupLoginButton();
@@ -82,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     Toast.makeText(this, result.message != null ? result.message : "Zalogowano", Toast.LENGTH_SHORT).show();
                     if (result.localUserId != null) {
+                        sessionManager.setUserLoggedIn(result.localUserId);
                         Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
                         intent.putExtra("USER_ID", result.localUserId);
                         startActivity(intent);

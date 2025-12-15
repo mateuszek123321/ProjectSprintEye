@@ -29,7 +29,7 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private Long id;
 
-    @Column(name = "user_email", unique = true,length = 100, nullable = false)
+    @Column(name = "user_email", unique = true, length = 100, nullable = false)
     private String userEmail;
 
     @Column(name = "user_name", nullable = false)
@@ -37,7 +37,7 @@ public class User implements UserDetails {
 
     //not required
     @Column(name = "birth_date", nullable = true)
-    private LocalDate birthDate;
+    private String birthDate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "gender", nullable = false)

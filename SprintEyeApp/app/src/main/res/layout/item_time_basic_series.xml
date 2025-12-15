@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="10dp"
     android:background="#97ABB1">
@@ -51,6 +52,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tvSeries_number"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -60,6 +62,7 @@
             android:textSize="17sp"/>
 
         <TextView
+            android:id="@+id/tvSeries_break_time"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="przerwy:"
@@ -67,38 +70,11 @@
             android:textSize="17sp"/>
     </LinearLayout>
 
-    <TableLayout
-        android:id="@+id/tableLapsBasic"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id = "@+id/tvLaps_series"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/table_border">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/table_row_border">
-
-            <TextView
-                android:id="@+id/tvLap_header"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:text="Okrążenie"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tvTime_header"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:text="Czas"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
-        </TableRow>
-    </TableLayout>
+        android:nestedScrollingEnabled="false"
+        tools:listitem="@layout/single_cell_for_basic_times"/>
 
 </LinearLayout>

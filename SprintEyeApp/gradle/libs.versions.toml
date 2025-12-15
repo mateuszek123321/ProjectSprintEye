@@ -14,8 +14,9 @@ materialVersion = "1.12.0"
 recyclerview = "1.4.0"
 retrofit = "2.9.0"
 roomRuntime = "2.8.3"
-kotlin = "1.9.24"
+kotlin = "2.1.0"
 cameraView = "1.5.0"
+media3CommonKtx = "1.8.0"
 
 
 [libraries]
@@ -36,6 +37,7 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "cameraView" }
+media3-common-ktx = { group = "androidx.media3", name = "media3-common-ktx", version.ref = "media3CommonKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
